@@ -1,5 +1,25 @@
 # CSE 341 Team Project
 
+## Application Stack
+
+- ExpressJS (js web server)
+- TypeScript (js superset to enable types)
+- Mongoose (nosql database)
+- Prettier (formatting)
+- ESLint (linting)
+- Swagger (api doc)
+- Yarn (package manager)
+
+## Getting started
+
+You need to install yarn globally before running the app. Run `yarn build` first time of use.
+
+### Development
+Run `yarn start:dev`, nodemoon will be watching any file change.
+
+### Production
+After build, run `yarn start`.
+
 ## Project Requirements
 
 This is a team project that you will complete as you do your team assignments for lessons 9-13 in this course. Because of the scope of this project, you will not have any personal assignments for the duration of it so that you can focus all of your time on this team project.
