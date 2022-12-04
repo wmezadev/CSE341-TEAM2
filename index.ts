@@ -9,7 +9,7 @@ dotenv.config();
 const app: Express = express();
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Express + TypeScript');
+  res.send('Go to <a href="/api-docs">/api-docs</a>');
 });
 
 app
