@@ -5,9 +5,9 @@
     "description": "BYUI Course API",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "boardgame.onrender.com",
   "basePath": "/",
-  "schemes": ["https", "http"],
+  "schemes": ["https"],
   "paths": {
     "/boardgame": {
       "get": {
