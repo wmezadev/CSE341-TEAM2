@@ -1,0 +1,400 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "cse341 project",
+    "description": "BYUI Course API",
+    "version": "1.0.0"
+  },
+  "host": "boardgame.onrender.com",
+  "basePath": "/",
+  "schemes": ["https"],
+  "paths": {
+    "/boardgame": {
+      "get": {
+        "description": "Get a list of all boardgames (array)",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "description": "Creates a new boardgame",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "Monopoly"
+                },
+                "slug": {
+                  "example": "monopoly"
+                },
+                "number_of_players": {
+                  "example": 4
+                },
+                "published_date": {
+                  "example": "2020-01-01"
+                },
+                "categories": {
+                  "example": ["a", "b"]
+                },
+                "rating": {
+                  "example": 8.2
+                },
+                "designer": {
+                  "example": "Cole Wehrle"
+                },
+                "publisher": {
+                  "example": "Leder Games"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/boardgame/{id}": {
+      "get": {
+        "description": "Get a specific boardgame by Id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Client Error (check request param)"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "Monopoly"
+                },
+                "slug": {
+                  "example": "monopoly"
+                },
+                "number_of_players": {
+                  "example": 4
+                },
+                "published_date": {
+                  "example": "2020-01-01"
+                },
+                "categories": {
+                  "example": ["a", "b"]
+                },
+                "rating": {
+                  "example": 8.2
+                },
+                "designer": {
+                  "example": "Cole Wehrle"
+                },
+                "publisher": {
+                  "example": "Leder Games"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Client Error (check request body)"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Client Error (check request param)"
+          }
+        }
+      }
+    },
+    "/review": {
+      "get": {
+        "description": "Get a list of all reviews (array)",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "Creates a new review",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "boardgame_id": {
+                  "example": "637716e6cf96a253b8e1b77f"
+                },
+                "published_date": {
+                  "example": "2021-01-01"
+                },
+                "author": {
+                  "example": "wmezadev"
+                },
+                "rating": {
+                  "example": 3.4
+                },
+                "content": {
+                  "example": "This is the content of a nice Review for Monopoly"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Client Error (check request body)"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/review/{review_id}": {
+      "put": {
+        "description": "Updates a review by review_id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "rating": {
+                  "example": 3.4
+                },
+                "content": {
+                  "example": "This is the content of a nice Review for Monopoly"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Client Error (check request body)"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Deletes a review by review_id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Client Error (check request param)"
+          }
+        }
+      }
+    },
+    "/review/getByBoardgame/{boardgame_id}": {
+      "get": {
+        "description": "Get all reviews of a specific boardgame by boardgame_id",
+        "parameters": [
+          {
+            "name": "boardgame_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Client Error (check request param)"
+          }
+        }
+      }
+    },
+    "/review/getByUser/{user_id}": {
+      "get": {
+        "description": "Get all reviews from a specific user by user_id ",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Client Error (check request param)"
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "description": "Creates a new user",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "wilmeza"
+                },
+                "password": {
+                  "example": "password"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Auth error, email or password not valid"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "wilmeza"
+                },
+                "password": {
+                  "example": "password"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Auth error, email or password not valid"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "description": "destroys user session",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/auth/github": {
+      "get": {
+        "description": "OAuth Login using google credentials",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Auth error, email or password not valid"
+          }
+        }
+      }
+    }
+  }
+}
