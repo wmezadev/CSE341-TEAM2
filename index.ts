@@ -1,8 +1,11 @@
 import express, { Express, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import { connecToDB } from './db/connect';
 import { router } from './routes';
-import { APP_HOST, APP_HTTP_SCHEMA, APP_PORT } from './config';
+import { APP_HOST, APP_HTTP_SCHEMA, APP_PORT, MONGODB_URI } from './config';
+
+console.log(process.env.MY_ENV_VAR);
 
 dotenv.config();
 
@@ -20,6 +23,15 @@ app
   })
   .use('/', router);
 
-app.listen(APP_PORT, () => {
-  console.log(`[server]: Server is running at ${APP_HTTP_SCHEMA}://${APP_HOST}:${APP_PORT}`);
-});
+connecToDB()
+  .then(() => {
+    app.use("/games", gamesRoutes);
+    console.log("db connection successful");
+    app.listen(APP_PORT, () => {
+      console.log(`[server]: Server is running at ${APP_HTTP_SCHEMA}://${APP_HOST}:${APP_PORT}`);
+    });
+  })
+  .catch((error: Error) => {
+    console.error("db connection failed", error);
+    process.exit();
+  });
