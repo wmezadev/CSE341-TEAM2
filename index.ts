@@ -18,6 +18,7 @@ app
   })
   .use('/', router);
 
+mongoose.set('strictQuery', false);
 mongoose.connect(MONGODB_URI, {}, () => {
   app.listen(APP_PORT, () => {
     console.log(`[server]: Server is running at http://localhost:${APP_PORT}`);
