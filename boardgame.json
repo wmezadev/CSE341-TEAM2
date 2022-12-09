@@ -1,0 +1,83 @@
+[{
+  "_id": {
+    "$oid": "6391012a8dbd00283019ee3e"
+  },
+  "title": "Gloomhaven",
+  "slug": "gloomhaven",
+  "number_of_players": "4",
+  "publishYear": "2017",
+  "rating": "8.7",
+  "designer": "Isaac Childres",
+  "publisher": "Cephalofair Games",
+  "catagory": [
+    "Adventure",
+    "Exploration",
+    "Fantasy",
+    "Fighting",
+    "Miniatures"
+  ]
+},{
+  "_id": {
+    "$oid": "6391012a8dbd00283019ee3f"
+  },
+  "title": "Scythe",
+  "slug": "scythe",
+  "number_of_players": "5",
+  "publishYear": "2016",
+  "rating": "8.2",
+  "designer": "Jamey Stegmaier",
+  "publisher": "Stonemaier Games",
+  "catagory": [
+    "Economic",
+    "Fighting",
+    "Science Fiction",
+    "Territory Building"
+  ]
+},{
+  "_id": {
+    "$oid": "6391012a8dbd00283019ee40"
+  },
+  "title": "Wingspan",
+  "slug": "wingspan",
+  "number_of_players": "5",
+  "publishYear": "2019",
+  "rating": "8.1",
+  "designer": "Elizabeth Hargrave",
+  "publisher": "Stonemaier Games",
+  "catagory": [
+    "Animals",
+    "Card Game",
+    "Educational"
+  ]
+},{
+  "_id": {
+    "$oid": "6391012a8dbd00283019ee41"
+  },
+  "title": "Root",
+  "slug": "root",
+  "number_of_players": "4",
+  "publishYear": "2018",
+  "rating": "8.2",
+  "designer": "Cole Wehrle",
+  "publisher": "Leder Games",
+  "catagory": [
+    "Animals",
+    "Fantasy",
+    "Wargame"
+  ]
+},{
+  "_id": {
+    "$oid": "6391012a8dbd00283019ee42"
+  },
+  "title": "Monopoly",
+  "slug": "monopoly",
+  "number_of_players": "8",
+  "publishYear": "1935",
+  "rating": "4.4",
+  "designer": "Charles Darrow",
+  "publisher": "Parker Bros",
+  "catagory": [
+    "Economic",
+    "Negotiation"
+  ]
+}]
