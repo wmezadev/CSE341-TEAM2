@@ -1,0 +1,13 @@
+POST http://localhost:8080/boardgame HTTP/1.1
+content-type:application/json
+
+{
+  "title": "Jaws of the Lion",
+  "slug": "jaws of the lion",
+  "number_of_players": 6,
+  "published_date": 2017,
+  "rating": 8.7,
+  "designer": "Isaac Childres",
+  "publisher": "Cephalofair Games",
+  "catagories": ["Adventure","Exploration","Fantasy","Fighting","Miniatures"]
+}
