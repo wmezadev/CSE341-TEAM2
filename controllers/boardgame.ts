@@ -69,7 +69,17 @@ const update = async (req: Request, res: Response) => {
     } = req.body;
     const resp = await Boardgame.updateOne(
       { _id: id },
-      { title, slug, number_of_players, published_date, categories, rating, designer, publisher }
+      {
+        title,
+        slug,
+        number_of_players,
+        published_date,
+        categories,
+        rating,
+        designer,
+        publisher,
+        updated: new Date()
+      }
     );
     if (!resp.acknowledged) {
       throw new Error(`There is no boardgame for ID: ${id}`);
