@@ -10,6 +10,19 @@ const index = async (req: Request, res: Response) => {
   }
 };
 
+const show = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const post = await Boardgame.findOne({ _id: id });
+    if (!post) {
+      throw new Error('Boardgame not found');
+    }
+    return res.status(200).json(post);
+  } catch (err: any) {
+    return res.status(404).json(err.Error);
+  }
+};
+
 const store = async (req: Request, res: Response) => {
   try {
     const {
@@ -41,4 +54,43 @@ const store = async (req: Request, res: Response) => {
   }
 };
 
-export const BoardgameController = { index, store };
+const update = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const {
+      title,
+      slug,
+      number_of_players,
+      published_date,
+      categories,
+      rating,
+      designer,
+      publisher
+    } = req.body;
+    const resp = await Boardgame.updateOne(
+      { _id: id },
+      { title, slug, number_of_players, published_date, categories, rating, designer, publisher }
+    );
+    if (!resp.acknowledged) {
+      throw new Error(`There is no boardgame for ID: ${id}`);
+    }
+    return res.status(201).json(resp);
+  } catch (err: any) {
+    return res.status(500).json(err.Error);
+  }
+};
+
+const destroy = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const resp = await Boardgame.findByIdAndRemove(id);
+    if (!resp) {
+      throw new Error('Boardgame not found');
+    }
+    return res.status(204).send();
+  } catch (err: any) {
+    return res.status(404).json(err.Error);
+  }
+};
+
+export const BoardgameController = { index, show, store, update, destroy };

@@ -3,7 +3,7 @@ content-type:application/json
 
 {
   "title": "Jaws of the Lion",
-  "slug": "jaws of the lion",
+  "slug": "jaws-of-the-lion",
   "number_of_players": 6,
   "published_date": 2017,
   "rating": 8.7,
@@ -11,3 +11,26 @@ content-type:application/json
   "publisher": "Cephalofair Games",
   "catagories": ["Adventure","Exploration","Fantasy","Fighting","Miniatures"]
 }
+
+###
+
+PUT http://localhost:8080/boardgame/63928bcb13674f9d836bfbeb HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Gloomhaven: Jaws of the Lion",
+  "slug": "gloomhaven-jaws-of-the-lion",
+  "number_of_players": 6,
+  "published_date": 2017,
+  "rating": 8.7,
+  "designer": "Isaac Childres",
+  "publisher": "Cephalofair Games",
+  "catagories": ["Adventure","Exploration","Fantasy","Fighting","Miniatures"]
+}
+
+###
+DELETE  http://localhost:8080/boardgame/63928bcb13674f9d836bfbeb HTTP/1.1
+
+###
+GET http://localhost:8080/boardgame/6392b9f57717a811b2e8e109 HTTP/1.1
+content-type: application/json
