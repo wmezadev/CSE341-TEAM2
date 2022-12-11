@@ -34,7 +34,7 @@
                   "example": 4
                 },
                 "published_date": {
-                  "example": "2020-01-01"
+                  "example": "2020"
                 },
                 "categories": {
                   "example": ["a", "b"]
@@ -107,7 +107,7 @@
                   "example": 4
                 },
                 "published_date": {
-                  "example": "2020-01-01"
+                  "example": "2020"
                 },
                 "categories": {
                   "example": ["a", "b"]
@@ -183,7 +183,7 @@
                   "example": "637716e6cf96a253b8e1b77f"
                 },
                 "published_date": {
-                  "example": "2021-01-01"
+                  "example": "2021"
                 },
                 "author": {
                   "example": "wmezadev"

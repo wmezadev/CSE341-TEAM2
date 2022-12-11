@@ -1,0 +1,77 @@
+### Get all Boardgames
+GET http://localhost:8080/boardgame/ HTTP/1.1
+content-type: application/json
+
+### Get a Boardgame by ID
+GET http://localhost:8080/boardgame/6392b9f57717a811b2e8e109 HTTP/1.1
+content-type: application/json
+
+### Create a Boardgame
+POST http://localhost:8080/boardgame HTTP/1.1
+content-type:application/json
+
+{
+  "title": "Jaws of the Lion",
+  "slug": "jaws-of-the-lion",
+  "number_of_players": 6,
+  "published_date": 2017,
+  "rating": 8.7,
+  "designer": "Isaac Childres",
+  "publisher": "Cephalofair Games",
+  "catagories": ["Adventure","Exploration","Fantasy","Fighting","Miniatures"]
+}
+
+### Update a Boardgame
+PUT http://localhost:8080/boardgame/63928bcb13674f9d836bfbeb HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Gloomhaven: Jaws of the Lion",
+  "slug": "gloomhaven-jaws-of-the-lion",
+  "number_of_players": 6,
+  "published_date": 2017,
+  "rating": 8.7,
+  "designer": "Isaac Childres",
+  "publisher": "Cephalofair Games",
+  "catagories": ["Adventure","Exploration","Fantasy","Fighting","Miniatures"]
+}
+
+### Delete a Boardgame
+DELETE  http://localhost:8080/boardgame/63928bcb13674f9d836bfbeb HTTP/1.1
+
+### Get all reviews
+GET http://localhost:8080/review HTTP/1.1
+content-type:application/json
+
+### Store a review
+POST http://localhost:8080/review HTTP/1.1
+content-type:application/json
+
+{
+  "boardgame_id": "63929013eefe51d690811c1c",
+  "user_id": "63929013eefe51d690811c1a",
+  "rating": 8.7,
+  "content": "This is a great review for a awesome boardgame"
+}
+
+### Update a review
+PUT http://localhost:8080/review/6392c7db72593c399743facc HTTP/1.1
+content-type:application/json
+
+{
+  "boardgame_id": "63929013eefe51d690811c1c",
+  "user_id": "63929013eefe51d690811c1a",
+  "rating": 6,
+  "content": "Not, this is not a great review for a awesome boardgame"
+}
+
+### Delete a Review
+DELETE  http://localhost:8080/review/6392c5f76eb42326cff5e2ef HTTP/1.1
+
+### Get a Review by Boardgame ID
+GET http://localhost:8080/review/getByBoardgame/63929013eefe51d690811c1c HTTP/1.1
+content-type:application/json
+
+### Get a Review by User ID
+GET http://localhost:8080/review/getByUser/63929013eefe51d690811c1a HTTP/1.1
+content-type:application/json

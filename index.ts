@@ -1,10 +1,8 @@
 import express, { Express, Request, Response } from 'express';
 import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
 import { router } from './routes';
-import { APP_HOST, APP_HTTP_SCHEMA, APP_PORT } from './config';
-
-dotenv.config();
+import { APP_HOST, APP_HTTP_SCHEMA, APP_PORT, MONGODB_URI } from './config';
+import mongoose from 'mongoose';
 
 const app: Express = express();
 
@@ -20,6 +18,10 @@ app
   })
   .use('/', router);
 
-app.listen(APP_PORT, () => {
-  console.log(`[server]: Server is running at ${APP_HTTP_SCHEMA}://${APP_HOST}:${APP_PORT}`);
+mongoose.set('strictQuery', false);
+mongoose.connect(MONGODB_URI, {}, () => {
+  app.listen(APP_PORT, () => {
+    console.log(`[server]: Server is running at http://localhost:${APP_PORT}`);
+    console.log('Connected to mongodb');
+  });
 });
