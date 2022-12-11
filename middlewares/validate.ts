@@ -5,12 +5,12 @@ export const PostBoardGameRequest = (req: Request, res: Response, next: NextFunc
   const validation = new Validator(req.body, {
     title: 'required|string|min:3|max:255',
     slug: 'required|alpha_dash|min:3|max:255',
-    number_of_players: 'required|number|max:8|min:1',
+    number_of_players: 'required|integer|max:8|min:1',
     published_date: 'required|date',
     categories: 'array',
-    rating: 'required|number|max:3',
+    rating: 'required|numeric|max:10',
     designer: 'required|string',
-    publisher: 'required|alpha|max:100'
+    publisher: 'required|string'
   });
 
   if (validation.fails()) {
@@ -28,12 +28,12 @@ export const PutBoardGameRequest = (req: Request, res: Response, next: NextFunct
     boardgame_id: 'string|max:24',
     title: 'required|string|min:3|max:255',
     slug: 'required|alpha_dash|min:3|max:255',
-    number_of_players: 'required|number|max:8|min:1',
+    number_of_players: 'required|integer|max:8|min:1',
     published_date: 'required|date',
     categories: 'array',
-    rating: 'required|number|max:3',
+    rating: 'required|numeric|max:10',
     designer: 'required|string',
-    publisher: 'required|alpha|max:100'
+    publisher: 'required|string'
   });
 
   if (validation.fails()) {
@@ -51,7 +51,7 @@ export const PostReviewRequest = (req: Request, res: Response, next: NextFunctio
     boardgame_id: 'required|string|max:24',
     published_date: 'required|date',
     author: 'required|alpha_dash|max:100',
-    rating: 'required|number',
+    rating: 'required|numeric|max:10',
     content: 'required|max:255'
   });
 
@@ -67,7 +67,7 @@ export const PostReviewRequest = (req: Request, res: Response, next: NextFunctio
 
 export const PutReviewRequest = (req: Request, res: Response, next: NextFunction) => {
   const validation = new Validator(req.body, {
-    rating: 'required|number',
+    rating: 'required|numeric|max:10',
     content: 'required|max:255'
   });
 
