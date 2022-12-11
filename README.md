@@ -43,3 +43,4 @@ The dist directory contains the production files, you need to build before by us
 
 - [@wmezadev](https://github.com/wmezadev/)
 - [@sbunkerchris](https://github.com/sbunkerchris)
+- [@ojorojustice](https://github.com/ojorojustice)
