@@ -1,8 +1,9 @@
 import express, { Express, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import { router } from './routes';
-import { APP_HOST, APP_HTTP_SCHEMA, APP_PORT, MONGODB_URI } from './config';
+import { APP_HOST, APP_HTTP_SCHEMA, APP_PORT, MONGODB_URI, COOKIE_SECRET } from './config';
 import mongoose from 'mongoose';
+import session from 'cookie-session';
 
 const app: Express = express();
 
@@ -16,6 +17,11 @@ app
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
   })
+  .use(
+    session({
+      secret: COOKIE_SECRET
+    })
+  )
   .use('/', router);
 
 mongoose.set('strictQuery', false);
