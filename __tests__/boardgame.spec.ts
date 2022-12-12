@@ -52,9 +52,9 @@ describe('boardgame', () => {
     });
 
     describe('post: given a wrong boardgame payload, is not stored', () => {
-      it('should return a 500', async () => {
+      it('should return a 400', async () => {
         const { statusCode } = await supertest(app).post(`/boardgame/`).send({});
-        expect(statusCode).toBe(500);
+        expect(statusCode).toBe(400);
       });
     });
   });
