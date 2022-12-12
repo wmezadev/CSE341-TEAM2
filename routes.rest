@@ -37,7 +37,7 @@ content-type: application/json
 }
 
 ### Delete a Boardgame
-DELETE  http://localhost:8080/boardgame/63928bcb13674f9d836bfbeb HTTP/1.1
+DELETE  http://localhost:8080/boardgame/63929013eefe51d690811c1c HTTP/1.1
 
 ### Get all reviews
 GET http://localhost:8080/review HTTP/1.1

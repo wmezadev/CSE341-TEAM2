@@ -4,7 +4,7 @@ import { router } from './routes';
 import { APP_HOST, APP_HTTP_SCHEMA, APP_PORT, MONGODB_URI } from './config';
 import mongoose from 'mongoose';
 
-const app: Express = express();
+export const app: Express = express();
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Go to <a href="/api-docs">/api-docs</a>');
