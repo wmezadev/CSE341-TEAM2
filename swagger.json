@@ -311,77 +311,6 @@
         }
       }
     },
-    "/register": {
-      "post": {
-        "description": "Creates a new user",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "username": {
-                  "example": "wilmeza"
-                },
-                "password": {
-                  "example": "password"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Auth error, email or password not valid"
-          }
-        }
-      }
-    },
-    "/login": {
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "username": {
-                  "example": "wilmeza"
-                },
-                "password": {
-                  "example": "password"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Auth error, email or password not valid"
-          }
-        }
-      }
-    },
-    "/logout": {
-      "get": {
-        "description": "destroys user session",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
     "/auth/github": {
       "get": {
         "description": "OAuth Login using google credentials",
@@ -392,6 +321,17 @@
           },
           "401": {
             "description": "Auth error, email or password not valid"
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "get": {
+        "description": "destroys user session",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
           }
         }
       }
