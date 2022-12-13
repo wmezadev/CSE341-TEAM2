@@ -1,8 +1,16 @@
 import { NextFunction, Response, Request } from 'express';
 import axios from 'axios';
-import { OAUTH_CLIENT_SECRET, OAUTH_CLIENT_ID } from '../config';
+import {
+  OAUTH_CLIENT_SECRET,
+  OAUTH_CLIENT_ID,
+  APP_HTTP_SCHEMA,
+  APP_HOST,
+  APP_PORT
+} from '../config';
 
-const redirect_uri = `http://localhost:8080/auth/github/callback`;
+const redirect_uri = `${APP_HTTP_SCHEMA}://${APP_HOST}${`${
+  APP_PORT ? ':' + APP_PORT : ''
+}`}/auth/github/callback`;
 
 async function getAccessToken(code: string | string[] | undefined) {
   const request = await axios('https://github.com/login/oauth/access_token', {
