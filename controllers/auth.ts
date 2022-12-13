@@ -1,17 +1,6 @@
 import { NextFunction, Response, Request } from 'express';
 import axios from 'axios';
 import { OAUTH_CLIENT_SECRET, OAUTH_CLIENT_ID } from '../config';
-import { SessionData } from 'express-session';
-
-declare module 'express-session' {
-  interface SessionData {
-    access_token: string | null;
-    githubId: string;
-  }
-}
-export interface GitHubContext {
-  session: SessionData;
-}
 
 const redirect_uri = `http://localhost:8080/auth/github/callback`;
 
@@ -62,4 +51,10 @@ const callback = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export const AuthController = { index, callback };
+const logout = (req: Request, res: Response) => {
+  // @ts-ignore
+  req.session = null;
+  res.redirect('/');
+};
+
+export const AuthController = { index, callback, logout };

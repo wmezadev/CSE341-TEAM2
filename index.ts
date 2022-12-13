@@ -19,7 +19,8 @@ app
   })
   .use(
     session({
-      secret: COOKIE_SECRET
+      secret: COOKIE_SECRET,
+      keys: ['access_token', 'githubId']
     })
   )
   .use('/', router);

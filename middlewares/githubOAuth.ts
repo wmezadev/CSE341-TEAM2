@@ -1,5 +1,4 @@
 import { Response, Request, NextFunction } from 'express';
-import { GitHubContext } from '../controllers';
 
 export const githubOAuth = (req: Request, res: Response, next: NextFunction) => {
   if (!req.session.githubId) {

@@ -5,3 +5,4 @@ export const authRoutes: Router = express.Router();
 
 authRoutes.get('/auth/github', AuthController.index);
 authRoutes.get('/auth/github/callback', AuthController.callback);
+authRoutes.get('/auth/logout', AuthController.logout);
