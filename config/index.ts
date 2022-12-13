@@ -8,3 +8,4 @@ export const MONGODB_URI = process.env.MONGODB_URI || '';
 export const OAUTH_CLIENT_SECRET = process.env.OAUTH_CLIENT_SECRET || '';
 export const OAUTH_CLIENT_ID = process.env.OAUTH_CLIENT_ID || '';
 export const COOKIE_SECRET = process.env.COOKIE_SECRET || '';
+export const APP_AUTH_HOST = process.env.APP_AUTH_HOST || '';
