@@ -47,6 +47,10 @@ Run `yarn start:dev` or (`npm run start:dev` when using npm), nodemoon will be w
 
 The dist directory contains the production files, you need to build before by using `yarn build`, then you can run `yarn start`. Or go to dist directory and run `node index.js`.
 
+### Testing
+
+Run `yarn test` to run all test using jest.
+
 ## Collaborators
 
 - [@wmezadev](https://github.com/wmezadev/)
