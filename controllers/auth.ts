@@ -40,7 +40,7 @@ const index = async (req: Request, res: Response) => {
 
 const callback = async (req: Request, res: Response, next: NextFunction) => {
   const code = req.query.code;
-  const access_token = await getAccessToken(code);
+  const access_token = await getAccessToken(code as string);
   const user = await fetchGitHubUser(access_token);
   if (user && req.session) {
     req.session.access_token = access_token;
