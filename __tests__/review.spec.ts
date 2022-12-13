@@ -6,7 +6,7 @@ import { Review } from '../models';
 
 const app = createServer();
 const ReviewTestPayload = {
-  boardgame_id: 'Test_bg_id',
+  boardgame_id: new mongoose.Types.ObjectId().toString(),
   user_id: 'Test_user_id',
   content: 'Test Content',
   rating: 8
@@ -33,10 +33,7 @@ describe('review', () => {
 
     describe('post: given a review payload, is stored', () => {
       it('should return a 201', async () => {
-        const { statusCode, body } = await supertest(app)
-          .post(`/review/`)
-          .send(ReviewTestPayload);
-        expect(statusCode).toBe(201);
+        const { statusCode, body } = await supertest(app).post(`/review/`).send(ReviewTestPayload);
         expect(body).toEqual({
           __v: 0,
           _id: expect.any(String),
@@ -44,6 +41,7 @@ describe('review', () => {
           updated: expect.any(String),
           ...ReviewTestPayload
         });
+        expect(statusCode).toBe(201);
       });
     });
 
@@ -55,49 +53,8 @@ describe('review', () => {
     });
   });
 
-  describe('route: /review/:boardgame_id', () => {
-    describe('get: given a wrong boardgame ID, does not exist', () => {
-      it('should return a 404', async () => {
-        const id = 14565;
-        await supertest(app).get(`/review/${id}`).expect(404);
-      });
-    });
-  })
-
-    describe('route: /review/:user_id', () => {
-      describe('get: given a wrong user ID, does not exist', () => {
-        it('should return a 404', async () => {
-          const id = 14565;
-          await supertest(app).get(`/review/${id}`).expect(404);
-        });
-      });
-    })
-
-    describe('get: given a boardgame ID, does exist', () => {
-      it('should return a 200', async () => {
-        const review = new Review({
-          ...ReviewTestPayload,
-          created: new Date(),
-          updated: new Date()
-        });
-        await review.save();
-        await supertest(app).get(`/boardgame/${review.boardgame_id}`).expect(200);
-      });
-    });
-
-    describe('get: given a user ID, does exist', () => {
-      it('should return a 200', async () => {
-        const review = new Review({
-          ...ReviewTestPayload,
-          created: new Date(),
-          updated: new Date()
-        });
-        await review.save();
-        await supertest(app).get(`/boardgame/${review.user_id}`).expect(200);
-      });
-    });
-
-    describe('put: given a boardgame ID and a payload, is updated', () => {
+  describe('route: /review/:review_id', () => {
+    describe('put: given a review ID and a payload, is updated', () => {
       it('should return a 201', async () => {
         const review = new Review({
           ...ReviewTestPayload,
@@ -106,10 +63,10 @@ describe('review', () => {
         });
         await review.save();
         const { statusCode, body } = await supertest(app)
-          .put(`/review/${review.boardgame_id}`)
+          .put(`/review/${review._id}`)
           .send({
             ...ReviewTestPayload,
-            slug: 'second-slug'
+            content: 'Second test content'
           });
         expect(statusCode).toBe(201);
         expect(body).toEqual({
@@ -122,39 +79,14 @@ describe('review', () => {
       });
     });
 
-    describe('put: given a user ID and a payload, is updated', () => {
-      it('should return a 201', async () => {
-        const review = new Review({
-          ...ReviewTestPayload,
-          created: new Date(),
-          updated: new Date()
-        });
-        await review.save();
-        const { statusCode, body } = await supertest(app)
-          .put(`/review/${review.user_id}`)
-          .send({
-            ...ReviewTestPayload,
-            slug: 'second-slug'
-          });
-        expect(statusCode).toBe(201);
-        expect(body).toEqual({
-          acknowledged: true,
-          matchedCount: 1,
-          modifiedCount: 1,
-          upsertedCount: 0,
-          upsertedId: null
-        });
-      });
-    });
-
-    describe('delete: given a wrong boardgame ID for delete, does not exist', () => {
+    describe('delete: given a wrong review ID for delete, does not exist', () => {
       it('should return a 404', async () => {
         const id = 156846;
         await supertest(app).delete(`/review/${id}`).expect(404);
       });
     });
 
-    describe('delete: given a boardgame ID for delete, then is destroyed', () => {
+    describe('delete: given a review ID for delete, then is destroyed', () => {
       it('should return a 204', async () => {
         const review = new Review({
           ...ReviewTestPayload,
@@ -162,8 +94,9 @@ describe('review', () => {
           updated: new Date()
         });
         await review.save();
-        const { statusCode } = await supertest(app).delete(`/review/${review.boardgame_id}`);
+        const { statusCode } = await supertest(app).delete(`/review/${review._id}`);
         expect(statusCode).toBe(204);
       });
     });
   });
+});
