@@ -1,8 +1,8 @@
 import { NextFunction, Response, Request } from 'express';
 import axios from 'axios';
 import { OAUTH_CLIENT_SECRET, OAUTH_CLIENT_ID, APP_AUTH_HOST } from '../config';
-
-const redirect_uri = `${APP_AUTH_HOST}/auth/github/callback`;
+// update to localhost
+const redirect_uri = `https://boardgame-team2.onrender.com/auth/github/callback`;
 
 async function getAccessToken(code: string | string[] | undefined) {
   const request = await axios('https://github.com/login/oauth/access_token', {
