@@ -49,8 +49,7 @@ export const PutBoardGameRequest = (req: Request, res: Response, next: NextFunct
 export const PostReviewRequest = (req: Request, res: Response, next: NextFunction) => {
   const validation = new Validator(req.body, {
     boardgame_id: 'required|string|max:24',
-    published_date: 'required|date',
-    author: 'required|alpha_dash|max:100',
+    user_id: 'required|alpha_dash|max:100',
     rating: 'required|numeric|max:10',
     content: 'required|max:255'
   });
